@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.example.com/webPages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="site" type="siteType"/>
+  <xs:complexType name="pollType">
+      <xs:attribute type="xs:boolean" name="authorisation" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="charsType">
+    <xs:choice>
+       <xs:element type="pollType" name="poll"/>
+    </xs:choice>
+    <xs:attribute type="xs:boolean" name="archive"/>
+    <xs:attribute type="xs:boolean" name="paid" use="required"/>
+    <xs:attribute type="xs:boolean" name="news"/>
+    <xs:attribute type="xs:boolean" name="mail"/>
+  </xs:complexType>
+  <xs:complexType name="pageType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title"/>
+      <xs:element type="charsType" name="chars" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:ID" name="id" use="required"/>
+    <xs:attribute name="authorisation" type="xs:boolean" use="required"/>
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Mirror"/>
+          <xs:enumeration value="News"/>
+          <xs:enumeration value="Portal"/>
+          <xs:enumeration value="Advertisement"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="siteType">
+    <xs:sequence>
+      <xs:element type="pageType" name="page" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

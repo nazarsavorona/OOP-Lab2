@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.example.com/webPages"
+      xsi:schemaLocation="http://www.example.com/webPages webPages.xsd">
+    <page id="ID-0" type="Mirror" authorisation="true">
+        <title>Mirror Page</title>
+        <chars mail="false" archive="true" paid="false">
+            <poll authorisation="false"/>
+        </chars>
+    </page>
+
+    <page id="ID-1" type="News" authorisation="false">
+        <title>News Page</title>
+        <chars mail="false" news="true" paid="false">
+<!--            <poll authorisation="true"/>-->
+        </chars>
+    </page>
+
+    <page id="ID-2" type="Portal" authorisation="false">
+        <title>Portal Page</title>
+        <chars mail="false" paid="false">
+            <poll authorisation="false"/>
+        </chars>
+    </page>
+
+    <page id="ID-3" type="Advertisement" authorisation="false">
+        <title>Advertisement Page</title>
+        <chars paid="false">
+            <poll authorisation="false"/>
+        </chars>
+    </page>
+</site>
