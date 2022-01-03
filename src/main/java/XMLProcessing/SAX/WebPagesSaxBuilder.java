@@ -20,20 +20,20 @@ public class WebPagesSaxBuilder extends AbstractWebPagesBuilder {
     private XMLReader reader;
 
     public WebPagesSaxBuilder() {
-        // reader configuration
-        SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             reader = saxParser.getXMLReader();
+            reader.setErrorHandler(new WebPageErrorHandler());
+            reader.setContentHandler(handler);
         } catch (ParserConfigurationException | SAXException e) {
             e.printStackTrace(); // log
         }
-        reader.setErrorHandler(new WebPageErrorHandler());
-        reader.setContentHandler(handler);
     }
 
     /**
      * Method obtaining all the WebPages as Set.
+     *
      * @return Set of WebPages.
      */
     public Set<WebPage> getWebPages() {
@@ -42,6 +42,7 @@ public class WebPagesSaxBuilder extends AbstractWebPagesBuilder {
 
     /**
      * Method that builds the set based on the data from Xml document.
+     *
      * @param filename Name of Xml file containing data.
      */
     public void buildSetWebPages(String filename) {

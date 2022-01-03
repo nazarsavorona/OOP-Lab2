@@ -39,6 +39,7 @@ public class WebPagesDomBuilder extends AbstractWebPagesBuilder {
 
     /**
      * Method that builds the set based on the data from Xml document.
+     *
      * @param filename Name of Xml file containing data.
      */
     public void buildSetWebPages(String filename) {
@@ -60,6 +61,7 @@ public class WebPagesDomBuilder extends AbstractWebPagesBuilder {
 
     /**
      * Method to build single WebPage from data of webPage Element.
+     *
      * @param webPageElement One of WebPage elements.
      * @return WebPage object.
      */
@@ -68,7 +70,7 @@ public class WebPagesDomBuilder extends AbstractWebPagesBuilder {
         WebPage webPage = WebPageFactory.getInstance(webPageType);
 
         String idString = webPageElement.getAttribute("id").toUpperCase().replace("ID-", "");
-        
+
         webPage.setId(Integer.parseInt(idString));
         webPage.setNeedsAuthorization(Boolean.parseBoolean(webPageElement.getAttribute("authorisation")));
 
@@ -108,10 +110,8 @@ public class WebPagesDomBuilder extends AbstractWebPagesBuilder {
         return webPage;
     }
 
-
     /**
-     *
-     * @param element Element form xml containing data.
+     * @param element     Element form xml containing data.
      * @param elementName Name of element.
      * @return String which is a content of element.
      */
